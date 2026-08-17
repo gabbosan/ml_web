@@ -21,14 +21,8 @@ jobs:
         run: |
           echo "No build step defined; publishing repository root"
 
-      - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy to GitHub Pages via peaceiris
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./
-
-  deploy-pages:
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
