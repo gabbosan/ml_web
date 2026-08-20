@@ -1,0 +1,37 @@
+# raske.ps1 - wrapper minimal
+param(
+    [Parameter(ValueFromRemainingArguments=$true)]
+    $Args
+)
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+# Preferir entrypoint do cerne-raske se existir
+$cerneDir = 'C:\GAB\IA\RASKE\cerne-raske'
+$cerneScriptsDir = Join-Path $cerneDir 'scripts'
+$cerneApply = Join-Path $cerneScriptsDir 'apply_suggestion.ps1'
+$cerneApprove = Join-Path $cerneScriptsDir 'approve-batch.ps1'
+$cerneLog = Join-Path $cerneScriptsDir 'log_suggestion.ps1'
+
+# Não executar arquivos .bat para evitar loops; preferir scripts PowerShell
+if (Test-Path $cerneApply) {
+    Write-Host "Executando cerne script: $cerneApply"
+    & "$cerneApply" @Args
+    return
+} elseif (Test-Path $cerneApprove) {
+    Write-Host "Executando cerne script: $cerneApprove"
+    & "$cerneApprove" @Args
+    return
+} elseif (Test-Path $cerneLog) {
+    Write-Host "Executando cerne script: $cerneLog"
+    & "$cerneLog" @Args
+    return
+}
+
+# Fallback: executar run_test.ps1 se existir no mesmo diretório
+$runTest = Join-Path $scriptDir 'run_test.ps1'
+if (Test-Path $runTest) {
+    Write-Host "Executando run_test.ps1..."
+    & "$runTest" @Args
+} else {
+    Write-Host "Nenhum entrypoint do cerne encontrado e run_test.ps1 ausente em $scriptDir"
+    Write-Host "Edite $PSCommandPath para apontar para o entrypoint desejado ou coloque o entrypoint em $cerneDir"
+}

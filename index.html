@@ -49,7 +49,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 html, body {
 	overflow-x: hidden;
 	font: 1.2em 'Pathway Gothic One', sans-serif  !important;
-	color: #c1c1c1 !important;   
+	color: #dbf4fb !important;   
 	background-color: #1C1C1C;   
 	margin: 0px;
 	padding-top: 0px;
@@ -64,11 +64,11 @@ main {
 h1, h1 a, h1 a:hover{
 	font-size: xxx-large;
 	letter-spacing: 0.03em;
-	color: #FFD39B !important;
+	color: #00c8ff !important;
 	} 
 
 h2, h2 a, h2 a:hover{
-	color:  #FFD39B !important;
+	color:  #dbf4fb !important;
 	font-size: xxx-large;
 	letter-spacing: 0.03em;
 	}
@@ -77,32 +77,32 @@ h3, h3 a, h3 a:hover {
 	font-size:  xx-large;
 	letter-spacing: 0.03em;
 	line-height: 1.2em;
-	color: #ffffff;
+	color: #00c8ff;
 	} 
 
 h4, h4 a, h4 a:hover {
 	font-size:  xx-large;
 	line-height: 1.2em;
-	color: #ffffff;
+	color: #dbf4fb;
 	
 	}  
 
 h5, h5 a, h5 a:hover {
 	font-size:  xx-large;
 	line-height: 1.2em;
-	color: #ffffff;
+	color: #00c8ff;
 	}  
 
 h6, h6 a, h6 a:hover  {
-	color:  #FFD39B;
+	color:  #dbf4fb;
 	font-size: x-large;
 	letter-spacing: 0.04em;
 	line-height: 1.4em;
 	}
 
 p, p a, p a:hover {
-	text-indent: 2em;
-	margin-top: 2em;
+	text-indent: 0em;
+	margin-bottom: 1em;
 	}
 
 .jumbotron {
@@ -127,7 +127,7 @@ img {
 	margin-top: 0%;
 	margin: 1%;
 	padding: 5%;
-	background-color: #c1c1c1;
+	background-color: #dbf4fb;
 	opacity: 0.8;
 	box-shadow: 5px 5px 5px rgba(0,0,0, .5);
 	}
@@ -136,7 +136,7 @@ img {
 	margin-top: 0%;
 	padding: 5%;
 	background-color: #000;
-	color: #FFD39B;
+	color: #dbf4fb;
 	box-shadow: 5px 5px 5px rgba(0,0,0, .5);
 	}
 
@@ -183,7 +183,7 @@ img {
 	padding: 0 0 10px 0;
 	border: none;
 	border-radius: 0;
-	background-color: ghostwhite;
+	background-color: #dbf4fb;
 	}
 
 .thumbnail img {
@@ -221,14 +221,14 @@ img {
 	}
 
 .panel {
-	border: 1px solid #fff; 
+	border: 1px solid #dbf4fb; 
 	border-radius:0px !important;
 	transition: box-shadow 0.5s;
 	}
 
 .panel:hover {
 	box-shadow: 0px 0px 30px rgba(0,0,0, .3);
-	border-color: ghostwhite;
+	border-color: #dbf4fb;
 	}
 
 .panel-footer .btn:hover {
@@ -261,7 +261,7 @@ img {
 	
 .panel-footer .btn {
 	margin: 15px 0;
-	background-color:ghostwhite;
+	background-color:#dbf4fb;
 	color: #818181;
 	}
 
@@ -287,22 +287,23 @@ img {
 }
 
 .navbar-nav li a, .navbar-brand {
-	color: #FFD39B !important;
+	color: #dbf4fb !important;
 	font-size: x-large;
 	}
 
-.navbar-nav li.asctive a {
-	color:  #ff03bc !important;
+.navbar-nav li.active a {
+	color:  #00c8ff !important;
+	background-color: #1c1c1c !important;
 	}  
 
-.navbar-nav li a:hover, .navbar-nav li.active a, .navbar-brand:hover {
-	color: #fff !important;
+.navbar-nav li a:hover, .navbar-brand:hover {
+	color: #00c8ff !important;
 	background-color: #1c1c1c !important;
 	}
 
 .navbar-default .navbar-toggle {
 	border-color: transparent;
-	color: #fff !important;
+	color: #00c8ff !important;
 	}
 
 footer{
@@ -311,12 +312,12 @@ footer{
 	text-align: center;
 	background-size: cover;
 	background-position: center;
-	/*background-image: url(img/2009-merenda.jpg);*/
+	/*background-image: url(img/universus.png);*/
 	box-shadow: 0px 0px 25px rgba(0,0,0, 0.5);
 	}
 
 footer .glyphicon{
-	color: #fff !important;
+	color: #00c8ff !important;
 	font-family: 'Glyphicons Halflings';
 	font-size: 40px;
 	}
@@ -424,6 +425,21 @@ footer .glyphicon{
 	width: 100%;
 	}
 
+/* Masonry-like gallery: same column width, varying heights, no gaps */
+.gallery {
+	column-count: 4;
+	column-gap: 0;
+}
+.gallery img {
+	width: 100%;
+	display: block;
+	margin: 0 0 0; /* sem gap entre imagens */
+	break-inside: avoid;
+}
+@media (max-width: 992px){ .gallery { column-count: 3; } }
+@media (max-width: 768px){ .gallery { column-count: 2; } }
+@media (max-width: 480px){ .gallery { column-count: 1; } }
+
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
 	.column {
@@ -462,10 +478,11 @@ footer .glyphicon{
 		
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-				<li><a href="#experiencias"><i>EXPERIÊNCIAS</i></a></li>
-				<li><a href="#cursos"><i>CURSOS</i></a></li>
-				<li><a href="#conhecimentos"><i>CONHECIMENTOS</i></a></li>
+				<li><a href="#experiencias"><i>VIVÊNCIA</i></a></li>
+				<li><a href="#cursos"><i>APRENDIZADO</i></a></li>
+				<li><a href="#conhecimentos"><i>HABILIDADES</i></a></li>
 				<li><a href="#contato"><i>CONTATO</i></a></li>
+				<li><a href="#galeria"><i>GALERIA</i></a></li>
 				</ul>
 			</div>
 		</div>		
@@ -510,6 +527,10 @@ footer .glyphicon{
 			<div class="col20"></div>
 		</div> 
 		
+
+
+
+		
 		<div  class="row">
 			<div class="col20"></div>
 			<div class="col60">
@@ -542,7 +563,7 @@ footer .glyphicon{
 	  
         <div class="col12">
    
-    <h1><i>EXPERIÊNCIAS</i></h1>
+    <h1><i>VIVÊNCIA</i></h1>
 	</div>
 	</div>
 	</div>
@@ -574,7 +595,7 @@ footer .glyphicon{
 	</p></h6>
 				<br><br>
 			</div>
-			<div class="col20"></div>
+			<div class="col10"></div>
 		
 		</div>
 
@@ -589,7 +610,7 @@ footer .glyphicon{
       <div class="row">
 
         <div class="col12">
-          <h1><i>CURSOS</i></h1>
+          <h1><i>APRENDIZADO</i></h1>
         </div> 
       </div>
     </div> 
@@ -598,10 +619,10 @@ footer .glyphicon{
   <div class="container-fluid">
 
    	<div class="row">
-		<div class="col20"></div>
+		<div class="col30"></div>
 	
 	<div class="col60">
-	 <h3 class="text-left slideanim"><i>Formações Acadêmicas</i></h3>
+	 <h3 class="text-left slideanim"><i>FORMAÇÕES ACADÊMICAS</i></h3>
 	
 	<h6 class="text-left">
 	<p class="slideanim">
@@ -616,6 +637,61 @@ footer .glyphicon{
 		</div> 
 
 
+			<div class="row">
+	<div class="col20"></div>
+	
+	<div class="col60">
+	 <h3 class="text-left slideanim"><i>CURSOS</i></h3>
+	
+	</div> 
+	<div class="col20"></div>
+
+</div> 
+
+
+			<div class="row">
+				<div class="col20"></div>
+	<div class="col30">
+	<h6 class="text-left">
+	<p class="slideanim">
+	- Solução Problemas Complexos | SenaiPlay | 2026
+	<br>- Gestão de Equipes | SenaiPlay | 2026
+	<br>- Impressão 3D | SenaiPlay | 2026
+	<br>- ChatBot | SenaiPlay | 2025
+	<br>- Python | DIO | 2024
+	<br>- Versionamento Git e GitHub | DIO | 2024
+	<br>- Drop Shipping | NuvenShop | 2024
+	<br>- Drop Shipping | Shopee | 2024
+	<br>- Bootstrap | W3C | 2023
+	<br>- CSS, HTML | W3C | 2022	
+	<br>- Programação Java | Udemy | 2020
+	
+	</p>
+	</h6>
+	</div>
+		<div class="col10"></div>
+		<div class="col30">
+	<h6 class="text-left">
+	<p class="slideanim">
+	- Alg. e Lógica de Programação | Udemy | 2019
+	<br>- C++: Orientação a Objetos | Udemy | 2019
+	<br>- DevWEB - HTML CSS | Udemy | 2019
+	<br>- Gestão de Projetos | Udemy | 2019	 
+	<br>- E Commerce | RedBubble | 2017
+	<br>- Drop Shipping | Hotmart | 2016
+	<br>- PrintonDemand | Montink | 2015
+	<br>- Indesign | CEFET | 2006
+	<br>- Corel Draw | Microcamp | 1999
+	<br>- HTML , CSS | Microcamp | 1998
+	<br>- Inglês | Yázigi | 1997
+
+	</p></h6>
+				<br><br>
+			</div>
+			<div class="col10"></div>
+		
+		</div> 
+
 		</div>
 
     <div id="conhecimentos" class="jumbotron text-left">
@@ -623,7 +699,7 @@ footer .glyphicon{
     <div class="contentjb slideanim">
       <div class="row">
         <div class="col12">
-          <h1><i>CONHECIMENTOS</i>
+          <h1><i>HABILIDADES</i>
           </h1>
         </div> 
       </div>
@@ -637,59 +713,127 @@ footer .glyphicon{
 		<div class="col20"></div>
 	
 	<div class="col30">
-	 <h3 class="text-left slideanim"><i>Habilidades</i></h3>
-	
+	<h3 class="text-left slideanim"><i>DIREÇÃO DE ARTE</i></h3>
 	<h6 class="text-left">
 	<p class="slideanim">
-	<br>Web Design
-	<br>Design de Produto
-	<br>Acessórios e Produção
-	<br>Design de Moda
-	<br>Ilustração e Arte Digital
-	<br>Criação de Conteúdo (Texto e Visual)
-	<br>Gerenciamento de Mídias Sociais
-	<br>Curadoria de Arte e Literatura
-	<br>Edição e Revisão de Textos
-	<br>Organização de Eventos Culturais
-	<br>Comunicação e Marketing
-	<br>Bootstrap
-	<br>HTML e CSS
-	<br>Scrum e Ágil
-	<br>Pacote Draw e Adobe
-	<br>Pacote Office (Word, Excel, PowerPoint)
+		- Ilustração
+	<br>- Arte Digital
+	<br>- Fotografia
+	<br>- Institudcional
+	<br>- Publicidade
+	<br>- Catálogos
+	<br>- Editoriais
+	<br>- Branding
+	<br>- Papelaria
+	<br>- Curadoria
+	<br>- Publicações
+	<br><br>
+	</p>
+	</h6>
 	
-	</p></h6>
-				<br><br>
+ <h3 class="text-left slideanim"><i>TECNOLOGIA</i></h3>
+	<h6 class="text-left">
+	<p class="slideanim">
+		- Mídia Social
+	<br>- IA, Web, UX
+	<br>- Sistemas
+	<br>- Aplicativos
+	<br>- Testes
+	<br>- Soluções
+	<br>- Bootstrap
+	<br>- HTML e CSS
+	<br>- Scrum
+	<br>- Ágil
+	<br>- Kanban
+	<br>- Pacote Draw
+	<br>- Pacote Adobe
+	<br>- Pacote Office
+<br>
+	<br>
+	</p>
+	</h6>
+	
+ <h3 class="text-left slideanim"><i>GESTÃO</i></h3>
+	<h6 class="text-left">
+	<p class="slideanim">
+		- Pilotagem
+	<br>- Produção
+	<br>- Otimização de Processos
+	<br>- Organização
+	<br>- Controle de Estoque
+	<br>- Fornecedores
+	<br>- Prestadores de Serviço
+	<br>- Clientes
+	<br>
+	</p>
+</h6>
+				
 	</div>
-<div class="col10"></div>
+<div class="col0"></div>
+
+
     <div class="col30">
-	 <h3 class="text-left slideanim"><i>Habilidades</i></h3>
-	
+ <h3 class="text-left slideanim"><i>CRIAÇÃO<br>DESENVOLVIMENTO</i></h3>
 	<h6 class="text-left">
 	<p class="slideanim">
-	<br>Web Design
-	<br>Design de Produto
-	<br>Acessórios e Produção
-	<br>Design de Moda
-	<br>Ilustração e Arte Digital
-	<br>Criação de Conteúdo (Texto e Visual)
-	<br>Gerenciamento de Mídias Sociais
-	<br>Curadoria de Arte e Literatura
-	<br>Edição e Revisão de Textos
-	<br>Organização de Eventos Culturais
-	<br>Comunicação e Marketing
-	<br>Bootstrap
-	<br>HTML e CSS
-	<br>Scrum e Ágil
-	<br>Pacote Draw e Adobe
-	<br>Pacote Office (Word, Excel, PowerPoint)
+		- Pesquisa de Tendências
+	<br>- Modelagem
+	<br>- Graduação
+	<br>- Coleções de Moda
+	<br>- Fichas Técnicas
+	<br>- Costura
+	<br>- Pilotagem
+<br><br>
+	</p>
+	</h6>
+	
+ <h3 class="text-left slideanim"><i>NICHOS</i></h3>
+	<h6 class="text-left">
+	<p class="slideanim">
+	- Fashion
+	<br>- Social
+	<br>- Jeanswear
+	<br>- Masculina
+	<br>- Feminina
+	<br>- Infantil
+	<br>- Calçados
+	<br>- Acessórios
+	<br>
+<br>
+	</p>
+	</h6>
+	
+ <h3 class="text-left slideanim"><i>BENEFICIAMENTO</i></h3>
+	<h6 class="text-left">
+	<p class="slideanim">
+		- Tricô
+	<br>- Malha
+	<br>- Couro
+	<br>- Bordados
+	<br>- Arte-Finalista
+	<br>- Adornos
+	<br>- Lavanderia
+	<br>- Tingimento<br><br>
+	</p>
+	</h6>
+	
+ <h3 class="text-left slideanim"><i>VETORES</i></h3>
+	<h6 class="text-left">
+	<p class="slideanim">
+		- Cortes
+	<br>- Gravações
+	<br>- Logos
+	<br>- Ícones
+	<br>- Jogos
+	<br>- Widgets
+<br>
 	
 	</p></h6>
 				<br><br>
 	</div>
             
             
-			<div class="col20"></div>
+			
 		
 		</div> 
 
@@ -740,8 +884,70 @@ footer .glyphicon{
 
 		</div>
   	 
+ <div id="galeria" class="jumbotron text-left">
+   
+    <div class="contentjb slideanim">
+      <div class="row">
+        <div class="col12">
+          <h1><i>GALERIA</i>
+          </h1>
+        </div> 
+      </div>
+	  </div>
+	  </div>
 
 
+
+
+  
+
+	<div class="container-fluid">
+		<div class="gallery">
+			<img class="slideanim" src="img/001_1454458415_l.jpg" data-mdb-img="img/001_1454458415_l.jpg" alt="" />
+			<img class="slideanim"  src="img/003.jpg" data-mdb-img="img/003.jpg" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186449_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186449_w.jpg" alt="" />
+			<img class="slideanim"  src="img/006.png" data-mdb-img="img/006.png" alt="" />
+			<img class="slideanim"  src="img/006_1455326304_l.jpg" data-mdb-img="img/006_1455326304_l.jpg" alt="" />
+			<img class="slideanim"  src="img/007.png" data-mdb-img="img/007.png" alt="" />
+			<img class="slideanim"  src="img/army_413874618_c.jpg" data-mdb-img="img/army_413874618_c.jpg" alt="" />
+			<img class="slideanim"  src="img/012.png" data-mdb-img="img/012.png" alt="" />			
+			<img class="slideanim"  src="img/002_1454450731_c.jpg" data-mdb-img="img/002_1454450731_c.jpg" alt="" />
+			<img class="slideanim"  src="img/023.png" data-mdb-img="img/023.png" alt="" />
+			<img class="slideanim"  src="img/94-rock_413875140_c.jpg" data-mdb-img="img/94-rock_413875140_c.jpg" alt="" />
+			<img class="slideanim"  src="img/024.jpg" data-mdb-img="img/024.jpg" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186093_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186093_w.jpg" alt="" />		
+			<img class="slideanim"  src="img/027_1455329290_l.jpg" data-mdb-img="img/027_1455329290_l.jpg" alt="" />
+			<img class="slideanim"  src="img/capa5jpg_1455317966_z.jpg" data-mdb-img="img/capa5jpg_1455317966_z.jpg" alt="" />
+			<img class="slideanim"  src="img/021.png" data-mdb-img="img/021.png" alt="" />
+			<img class="slideanim"  src="img/013.jpg" data-mdb-img="img/013.jpg" alt="" />
+			<img class="slideanim"  src="img/002_1455327288_l.jpg" data-mdb-img="img/002_1455327288_l.jpg" alt="" />
+			<img class="slideanim"  src="img/017.jpg" data-mdb-img="img/017.jpg" alt="" />
+			<img class="slideanim"  src="img/014.jpg" data-mdb-img="img/014.jpg" alt="" />
+			<img class="slideanim"  src="img/016_1454460511_l.jpg" data-mdb-img="img/016_1454460511_l.jpg" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186044_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186044_w.jpg" alt="" />
+			<img class="slideanim"  src="img/015.png" data-mdb-img="img/015.png" alt="" />
+			<img class="slideanim"  src="img/attaching-zone_413875049_c.jpg" data-mdb-img="img/attaching-zone_413875049_c.jpg" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186127_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186127_w.jpg" alt="" />
+			<img class="slideanim"  src="img/005.png" data-mdb-img="img/005.png" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186155_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186155_w.jpg" alt="" />
+			<img class="slideanim"  src="img/018.jpg" data-mdb-img="img/018.jpg" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186177_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186177_w.jpg" alt="" />
+			<img class="slideanim"  src="img/022.png" data-mdb-img="img/022.png" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186229_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186229_w.jpg" alt="" />
+			<img class="slideanim"  src="img/004.png" data-mdb-img="img/004.png" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186283_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186283_w.jpg" alt="" />
+			<img class="slideanim"  src="img/011.png" data-mdb-img="img/011.png" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186326_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186326_w.jpg" alt="" />
+			<img class="slideanim"  src="img/010.png" data-mdb-img="img/010.png" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186347_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186347_w.jpg" alt="" />
+			<img class="slideanim"  src="img/016.jpg" data-mdb-img="img/016.jpg" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186386_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186386_w.jpg" alt="" />
+			<img class="slideanim"  src="img/020.png" data-mdb-img="img/020.png" alt="" />
+			<img class="slideanim"  src="img/catlogo-sexxes-inverno-2006_329186431_w.jpg" data-mdb-img="img/catlogo-sexxes-inverno-2006_329186431_w.jpg" alt="" />
+			<img class="slideanim"  src="img/008.jpg" data-mdb-img="img/008.jpg" alt="" />
+
+		</div>
+	</div>
 
 </main>
 
