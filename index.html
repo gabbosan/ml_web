@@ -17,12 +17,22 @@
 						
 						<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One">
 
-						<!-- Favicons: manter apenas favicon.ico e apple-touch-icon -->
-						<link rel="shortcut icon" href="img/favicon.ico">
+						<!-- Primary favicons (generated) -->
+						<link rel="icon" type="image/png" href="img/favicon-16.png" sizes="16x16">
+						<link rel="icon" type="image/png" href="img/favicon-32.png" sizes="32x32">
 						<link rel="apple-touch-icon" href="img/favicon-180.png" sizes="180x180">
+						<link rel="shortcut icon" href="img/favicon.ico" >
+
+						<!-- Alternate / fallback set (converted from second image)
+						<link rel="icon" type="image/png" href="img/favicon-alt-16.png" sizes="16x16" >
+						<link rel="icon" type="image/png" href="img/favicon-alt-32.png" sizes="32x32" > 
+-->
 						<link rel="canonical" href="https://gfb-three.vercel.app/" >
 
-						<meta name="theme-color" content="#1C1C1C" >
+						<meta name="theme-color" content="#1c1f1f" >
+						<meta name="msapplication-TileColor" content="#1c1f1f" />
+						<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+						<link rel="manifest" href="/img/manifest.json">
 						<meta property="og:site_name" content="G F B" >
 						<meta property="og:title" content="Gabriela Freitas Bosan — Portfólio" >
 						<meta property="og:description" content="Profissional criativa em design de moda, web, ilustração e conteúdo." >
@@ -87,8 +97,8 @@ html, body {
 	overflow-x: hidden;
 	font-family: 'Pathway Gothic One', sans-serif;
 	font-size: var(--fs-base);
-	color: #dbf4fb !important;
-	background-color: #1C1C1C;
+	color: #cbfff6 !important;
+	background-color: #1c1f1f;
 	margin: 0px;
 	padding-top: 0px;
 	position: relative;
@@ -103,40 +113,40 @@ main {
 h1, h1 a, h1 a:hover {
 	font-size: clamp(var(--h1-min), calc(1.8rem + 1.8vw), var(--h1-max));	
 	letter-spacing: 0.03em;
-	color: #00c8ff !important;
+	color: #00ffd0 !important;
 	line-height: 1.05;
 }
 
 h2, h2 a, h2 a:hover {
 	font-size: clamp(var(--h2-min), calc(1.4rem + 1.4vw), var(--h2-max));
 	letter-spacing: 0.03em;
-	color: #dbf4fb !important;
+	color: #cbfff6 !important;
 }
 
 h3, h3 a, h3 a:hover {
 	font-size: clamp(var(--h3-min), calc(1.2rem + 1.0vw), var(--h3-max));	
 	letter-spacing: 0.03em;
 	line-height: 1.2;
-	color: #00c8ff;
+	color: #00ffd0;
 }
 
 h4, h4 a, h4 a:hover {
 	font-size: clamp(var(--h4-min), calc(1.0rem + 0.6vw), var(--h4-max));
 	line-height: 1.2;
-	color: #dbf4fb;
+	color: #cbfff6;
 }
 
 h5, h5 a, h5 a:hover {
 	font-size: clamp(var(--h5-min), calc(0.95rem + 0.35vw), var(--h5-max));
 	line-height: 1.2;
-	color: #00c8ff;
+	color: #00ffd0;
 }
 
 h6, h6 a, h6 a:hover {
 	font-size: clamp(var(--h6-min), calc(0.9rem + 0.2vw), var(--h6-max));
 	letter-spacing: 0.04em;
 	line-height: 1.4;
-	color: #dbf4fb;
+	color: #cbfff6;
 }
 
 p, p a, p a:hover {
@@ -148,7 +158,7 @@ p, p a, p a:hover {
 	background-size: cover;
 	background-position: top;
 	/*background-image: url(img/universus.png);*/
-	background-color: #363636;     
+	background-color: #2f3434;     
 	box-shadow: 0px 0px 25px rgba(0,0,0, 0.5);
 	height: inherit;
 	border-radius: 0px !important;
@@ -166,7 +176,7 @@ img {
 	margin-top: 0%;
 	margin: 1%;
 	padding: 5%;
-	background-color: #dbf4fb;
+	background-color: #cbfff6;
 	opacity: 0.8;
 	box-shadow: 5px 5px 5px rgba(0,0,0, .5);
 	}
@@ -174,8 +184,8 @@ img {
 .content {
 	margin-top: 0%;
 	padding: 5%;
-	background-color: #000;
-	color: #dbf4fb;
+	background-color: #080909;
+	color: #cbfff6;
 	box-shadow: 5px 5px 5px rgba(0,0,0, .5);
 	}
 
@@ -202,19 +212,19 @@ img {
 	}
 	
 .logo-small {
-	color: #818181;
+	color: #2f3434;
 	opacity: 0.2;
 	font-size: 100px;
 	}
 
 .logo {
-	color: #818181;
+	color: #2f3434;
 	opacity: 0.2;
 	font-size: 360px;
 	}
 
 .logo:hover, .logo-small:hover{
-	color: #818181;
+	color: #2f3434;
 	opacity: 0.8;
 	}
 
@@ -222,7 +232,7 @@ img {
 	padding: 0 0 10px 0;
 	border: none;
 	border-radius: 0;
-	background-color: #dbf4fb;
+	background-color: #cbfff6;
 	}
 
 .thumbnail img {
@@ -237,15 +247,15 @@ img {
 
 .carousel-control.right, .carousel-control.left {
 	background-image: none;
-	color: #000;
+	color: #080909;
 	}
 
 .carousel-indicators li {
-	border-color: #000;
+	border-color: #080909;
 	}
 	
 .carousel-indicators li.active {
-	background-color: #818181;
+	background-color: #2f3434;
 	}
 	
 .item h4 {
@@ -260,14 +270,14 @@ img {
 	}
 
 .panel {
-	border: 1px solid #dbf4fb; 
+	border: 1px solid #cbfff6; 
 	border-radius:0px !important;
 	transition: box-shadow 0.5s;
 	}
 
 .panel:hover {
 	box-shadow: 0px 0px 30px rgba(0,0,0, .3);
-	border-color: #dbf4fb;
+	border-color: #cbfff6;
 	}
 
 .panel-footer .btn:hover {
@@ -300,8 +310,8 @@ img {
 	
 .panel-footer .btn {
 	margin: 15px 0;
-	background-color:#dbf4fb;
-	color: #818181;
+	background-color:#cbfff6;
+	color: #2f3434;
 	}
 
 .navbar{
@@ -326,28 +336,28 @@ img {
 }
 
 .navbar-nav li a, .navbar-brand {
-	color: #dbf4fb !important;
+	color: #cbfff6 !important;
 	font-size: x-large;
 	}
 
 .navbar-nav li.active a {
-	color:  #00c8ff !important;
-	background-color: #1c1c1c !important;
+	color:  #00ffd0 !important;
+	background-color: #1c1f1f !important;
 	}  
 
 .navbar-nav li a:hover, .navbar-brand:hover {
-	color: #00c8ff !important;
-	background-color: #1c1c1c !important;
+	color: #00ffd0 !important;
+	background-color: #1c1f1f !important;
 	}
 
 .navbar-default .navbar-toggle {
 	border-color: transparent;
-	color: #00c8ff !important;
+	color: #00ffd0 !important;
 	}
 
 footer{
 	margin-bottom: 0px;
-	background-color: #363636; 
+	background-color: #2f3434; 
 	text-align: center;
 	background-size: cover;
 	background-position: center;
@@ -356,7 +366,7 @@ footer{
 	}
 
 footer .glyphicon{
-	color: #00c8ff !important;
+	color: #00ffd0 !important;
 	font-family: 'Glyphicons Halflings';
 	font-size: 40px;
 	}
