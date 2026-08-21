@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teste Carrossel BS3</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    /* Área do carrossel: altura fixa (ajuste para vh se preferir) */
+    .carousel, .carousel-inner, .carousel .item { width:100%; height:480px; }
+    /* Centraliza e mostra a imagem inteira sem cortar */
+    .carousel .item { display:flex; align-items:center; justify-content:center; background:#000; }
+    .carousel .item img {
+      max-width:100%;
+      max-height:100%;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      display:block;
+    }
+    /* esconder legendas/indicadores visuais se houver */
+    .carousel-indicators, .carousel-caption { display:none !important; }
+  </style>
+</head>
+<body>
+
+<div id="testCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides (gerado dinamicamente a partir de img/manifest.json) -->
+  <div class="carousel-inner" role="listbox" id="carouselInner"></div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#testCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="right carousel-control" href="#testCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  // Versão mínima: busca manifest e monta slides sem pré-carregar/filtrar
+  fetch('img/manifest.json').then(r=>r.json()).then(list=>{
+    const inner = document.getElementById('carouselInner');
+    list.forEach((f,i)=>{
+      const div = document.createElement('div'); div.className = 'item'+(i===0? ' active':'');
+      const img = document.createElement('img'); img.src='img/'+f; img.alt=''; img.loading='lazy';
+      div.appendChild(img); inner.appendChild(div);
+    });
+    // inicia o carrossel em loop (comportamento padrão do Bootstrap)
+    $('#testCarousel').carousel({ interval: 6000, pause: false });
+  }).catch(()=>{ /* sem fallback */ });
+</script>
+</body>
+</html>

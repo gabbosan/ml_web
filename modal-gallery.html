@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeria Modal</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    .thumbs { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+    .thumb { width:120px; height:160px; overflow:hidden; cursor:pointer; border:2px solid #eee; }
+    .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* Modal square-like but 3:4 ratio, responsivo */
+    .modal-dialog { max-width: none; }
+    .modal-content { background:#111; color:#fff; border-radius:6px; overflow:hidden; }
+    .modal-body { padding:0; }
+    /* Quadrado menor responsivo: usa min(80vw, 80vh) para evitar barra de rolagem */
+    #modalCarousel { width: min(80vw, 80vh); height: min(80vw, 80vh); margin: 10px auto; }
+    #modalCarousel .carousel-inner, #modalCarousel .item { width:100%; height:100%; }
+    #modalCarousel .item img { width:100%; height:100%; object-fit:contain; display:block; background:#000; }
+    /* centralizar mídia e evitar barras de rolagem internas */
+    #modalCarousel .item { display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    /* controles maiores e sem fundo */
+    .carousel-control { opacity:0.9; }
+
+    @media (max-width:600px){
+      .thumb{ width:90px; height:120px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h3 class="text-center">Galeria — clique para abrir (ignora .mp4)</h3>
+  <div class="text-center" style="margin:15px 0;">
+    <button id="openCarouselBtn" class="btn btn-primary" disabled>Abrir Galeria</button>
+  </div>
+  <div class="thumbs" id="thumbs"></div>
+</div>
+
+<!-- Modal -->
+<div id="galleryModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div class="modal-media" id="modalMediaContainer">
+          <img id="modalMedia" src="" alt="" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" id="prevBtn">&laquo; Anterior</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-default" id="nextBtn">Próximo &raquo;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Carousel Modal (abre direto com setas, sem indicadores) -->
+      <div id="carouselModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body text-center" style="padding:0; background:#000;">
+              <div id="modalCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox" id="modalCarouselInner"></div>
+                <a class="left carousel-control" href="#" role="button" data-action="prev" style="width:5%;">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="font-size:32px;"></span>
+                </a>
+                <a class="right carousel-control" href="#" role="button" data-action="next" style="width:5%;">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="font-size:32px;"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+// Carrega lista de imagens a partir de img/manifest.json (gerado no servidor)
+let files = [];
+const thumbs = document.getElementById('thumbs');
+// Carrega manifest e pré-carrega imagens; só adiciona thumbnails para imagens que carregarem com sucesso
+fetch('img/manifest.json').then(r=>r.json()).then(list=>{
+  // pré-carrega e filtra
+  const promises = list.map(f=>{
+    return new Promise(resolve=>{
+      const img = new Image();
+      img.onload = ()=> resolve({ ok:true, file:f });
+      img.onerror = ()=> resolve({ ok:false, file:f });
+      img.src = 'img/'+f;
+    });
+  });
+  Promise.all(promises).then(results=>{
+    files = results.filter(x=>x.ok).map(x=>x.file);
+    files.forEach((f,i)=>{
+      const div = document.createElement('div'); div.className='thumb'; div.dataset.index=i;
+      const img = document.createElement('img'); img.src='img/'+f; img.alt='';
+      div.appendChild(img); thumbs.appendChild(div);
+    });
+  });
+}).catch(err=>{ console.error('Erro ao carregar manifest:', err); });
+
+let currentIndex = 0;
+function openModal(index){
+  currentIndex = index;
+  const f = files[index];
+  buildModalCarousel(index);
+  $('#carouselModal').modal('show');
+}
+
+thumbs.addEventListener('click', (e)=>{
+  const t = e.target.closest('.thumb'); if(!t) return;
+  openModal(parseInt(t.dataset.index,10));
+});
+
+// prev/next buttons for galleryModal removed (carousel modal handles navigation)
+
+// Ajusta dialog width to respect min(90vw,90vh)
+function adjustDialog(){
+  // handled by CSS max-width using min(); nothing else needed
+}
+window.addEventListener('resize', adjustDialog);
+
+// Ao clicar no botão 'Abrir Galeria', abre o modal com o carrossel começando no primeiro
+document.getElementById('openCarouselBtn').addEventListener('click', ()=>{ buildModalCarousel(0); $('#carouselModal').modal('show'); });
+
+// Constrói o carrossel dentro do modal (sem indicadores, só setas). Ignora mp4.
+function buildModalCarousel(startIndex){
+  const inner = document.getElementById('modalCarouselInner'); inner.innerHTML = '';
+  files.forEach((f,i)=>{
+    const div = document.createElement('div'); div.className = 'item'+(i===startIndex? ' active':'');
+    const img = document.createElement('img'); img.src = 'img/'+f; img.alt=''; img.loading='lazy';
+    img.onerror = function(){ this.style.display='none'; };
+    div.appendChild(img); inner.appendChild(div);
+  });
+  // reinicia o carousel plugin
+  $('#modalCarousel').carousel(0);
+  // intercepta cliques nas setas para evitar comportamento de âncora que pode causar 'pular'
+  $('#modalCarousel .carousel-control').off('click.custom').on('click.custom', function(e){
+    e.preventDefault();
+    const action = $(this).data('action');
+    if(action==='prev') $('#modalCarousel').carousel('prev');
+    else $('#modalCarousel').carousel('next');
+  });
+}
+</script>
+</body>
+</html>
