@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "ml-web",
+  "builds": [
+    { "src": "index*.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index-clean.html" }
+  ]
+}
